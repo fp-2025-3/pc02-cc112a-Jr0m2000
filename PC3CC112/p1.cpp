@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cstring>
-#include <cctype>
+#include <cstdlib>
 
 using namespace std;
 
@@ -9,7 +9,7 @@ int transformar(char*texto,int*N){
     int n=0;
     while (token!=nullptr)
     {
-        *N=(int)(*token);
+        *N=atoi(token);
         token=strtok(nullptr,", ");
         N++;
         n++;
@@ -20,9 +20,9 @@ int transformar(char*texto,int*N){
 bool sumaK(int*N,int n,int k){
     for (int i = 0; i < n; i++)
     {
-        for (int j = 0; i < n; i++)
+        for (int j = i+1; j < n; j++)
         {
-            if(i!=j&&N[i]+N[j]==k){
+            if(N[i]+N[j]==k){
                 return true;
             }
         }
@@ -30,6 +30,8 @@ bool sumaK(int*N,int n,int k){
     }
     return false;
 }
+//pequeñas correcciones en mis funciones aun me falta implementar el algoritmo O(n)
+//en cuanto pueda resolver como hacerlo con esa complejidad le hago commit
 
 int main()
 {
