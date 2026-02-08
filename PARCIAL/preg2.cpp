@@ -14,7 +14,8 @@ void MostrarRanking(string Corredor[],int Tiempo[],int n){
             if (Tiempo[j+1]<Tiempo[j])
             {
                 swap(Tiempo[j+1],Tiempo[j]);
-                Corredor[j+1].swap(Corredor[j]);
+                swap(Corredor[j+1], Corredor[j]);
+
             }
         }
         
@@ -23,7 +24,7 @@ void MostrarRanking(string Corredor[],int Tiempo[],int n){
     cout<<"RANKING FINAL\n";
     for (int i = 0; i < n; i++)
     {
-        cout<<i+1<<". "<<(*Corredor)[i]<<" - "<<Tiempo[i]<<" segundos\n";
+        cout<<i+1<<". "<<Corredor[i]<<" - "<<Tiempo[i]<<" segundos\n";
     }
     
 }

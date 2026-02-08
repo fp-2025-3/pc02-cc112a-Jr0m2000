@@ -6,7 +6,7 @@ using namespace std;
 const int N=4;
 
 bool esFilaDominanteEstricta(int(*M)[N],int f){
-    bool dominante=true;
+    bool dominante=false;
     
     for (int j = 0; j < N; j++)
     {
@@ -17,6 +17,11 @@ bool esFilaDominanteEstricta(int(*M)[N],int f){
                 dominante=false;
                 return dominante;
             }
+            if (i!=f&&M[f][j]>M[i][j])
+            {
+                dominante = true;
+            }
+            
         }
         
 
@@ -29,19 +34,24 @@ bool esFilaDominanteEstricta(int(*M)[N],int f){
 bool esFilaFuertementeDominante(int(*M)[N],int f){
     if (esFilaDominanteEstricta(M,f))
     {
-        int sumaFMax=-100;
+        int sumaFMax=-1000;
         
         for (int i = 0; i < N; i++)
         {
             int sumaF=0;
-            for (int j = 0; j < N; j++)
+            if (i!=f)
             {
-                sumaF+=M[i][j];
+                for (int j = 0; j < N; j++)
+                {
+                    sumaF+=M[i][j];
+                }
+                if (sumaF>sumaFMax)
+                {
+                    sumaFMax=sumaF;
+                }
             }
-            if (sumaF>sumaFMax)
-            {
-                sumaFMax=sumaF;
-            }
+            
+            
         }
         
         int sumaDom=0;
@@ -49,7 +59,7 @@ bool esFilaFuertementeDominante(int(*M)[N],int f){
         {
             sumaDom+=M[f][j];
         }
-        if(sumaDom>=sumaFMax){
+        if(sumaDom>sumaFMax){
             return true;
 
         }else
