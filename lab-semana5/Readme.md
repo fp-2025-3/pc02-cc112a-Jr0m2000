@@ -1,3 +1,3 @@
 # ejemplo de salida 
 ## Ejercicio 1
-![alt text](Imagen pegada.png)
+![alt text](img/imagen1.png)
