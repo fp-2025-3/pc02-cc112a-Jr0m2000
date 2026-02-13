@@ -16,7 +16,7 @@ Producto crearProducto(int codigo,const char* nombre,double precio, int stock);
 Producto* crearInventario(int n);
 Producto* buscarProducto(Producto* inventario,int n,int codigoBuscado);
 void MostrarInventario(Producto* inventario, int n);
-//void liberarInventario(Producto* inventario, int n);
+void liberarInventario(Producto* inventario, int n);
 
 int main()
 {
@@ -33,14 +33,11 @@ int main()
     {
         cout<<"Producto no encontrado"<<endl;
     }
+
     for (int i = 0; i < 5; i++)
     {
-        delete [] (Inventario+i)->nombre;
+        liberarInventario((Inventario+i),5);
     }
-    delete[] Inventario;
-    delete[]buscado->nombre;
-    delete[] buscado;
-    //liberarInventario(Inventario,5);
     return 0;
 }
 
@@ -87,12 +84,12 @@ void MostrarInventario(Producto* inventario, int n){
     
 }
 
-/*void liberarInventario(Producto* inventario, int n){
+void liberarInventario(Producto* inventario, int n){
     for (int i = 0; i < n; i++)
     {
-        delete [] inventario[i].nombre;
-        inventario[i].nombre=nullptr;
+        delete [] (inventario+i)->nombre;
+        (inventario+i)->nombre=nullptr;
     }
-
-
-}*/
+    delete[] inventario;
+    inventario=nullptr;
+}
