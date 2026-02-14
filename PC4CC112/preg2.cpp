@@ -94,7 +94,7 @@ void generarExtras(Seleccion &S){
 void OrdenarSelecciones(Seleccion S[],int n){
     for (int i = 0; i < n; i++)
     {
-        for (int j = 0; i < n-1-i; i++)
+        for (int j = 0; j < n-1-i; j++)//habia puesto i en lugar de j por ello no ordenaba
         {
             if (S[j+1].Puntaje>S[j].Puntaje)
             {

@@ -33,11 +33,9 @@ int main()
     {
         cout<<"Producto no encontrado"<<endl;
     }
-
-    for (int i = 0; i < 5; i++)
-    {
-        liberarInventario((Inventario+i),5);
-    }
+        
+    liberarInventario((Inventario),5);
+  
     return 0;
 }
 
@@ -56,9 +54,9 @@ Producto* crearInventario(int n){
     const char*temp[]={"Teclado","mouse","camara","monitor","audifonos"};
     for (int i = 0; i < n; i++)
     {
-        crearProducto(100+i,temp[i],10.5*(1+i),5*(i+1));
+        Inventario[i]=crearProducto(100+i,temp[i],10.5*(1+i),5*(i+1));//no estaba asignado los elementos solo creandolos
     }
-    return Inventario;//un inventario se libera como delete [] inventario
+    return Inventario;
 }
 
 Producto* buscarProducto(Producto* inventario,int n,int codigoBuscado){
